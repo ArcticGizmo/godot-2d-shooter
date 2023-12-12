@@ -20,3 +20,11 @@ func shoot():
 	bullet.apply_impulse(Vector2(BULLET_SPEED, 0).rotated(rotation))
 	owner.add_child(bullet)
 	
+	
+func kill():
+	get_tree().reload_current_scene()
+
+
+func _on_area_2d_body_entered(body):
+	if "Enemy" in body.name:
+		kill()

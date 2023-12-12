@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://by8wqqp1gmxkd"]
+[gd_scene load_steps=6 format=3 uid="uid://by8wqqp1gmxkd"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_yonck"]
 [ext_resource type="Texture2D" uid="uid://ciqhhcywmh7in" path="res://Player.png" id="2_3jgg4"]
+[ext_resource type="PackedScene" uid="uid://1exed6s0xqec" path="res://Enemy.tscn" id="3_3kimn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nq12c"]
 size = Vector2(16, 16)
@@ -28,3 +29,7 @@ shape = SubResource("RectangleShape2D_id8u6")
 
 [node name="Marker2D" type="Marker2D" parent="Player"]
 position = Vector2(19, 0)
+
+[node name="Enemy" parent="." instance=ExtResource("3_3kimn")]
+
+[connection signal="body_entered" from="Player/Area2D" to="Player" method="_on_area_2d_body_entered"]
