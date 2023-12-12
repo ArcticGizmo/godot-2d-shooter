@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED: int = 500
+const SPEED: int = 300
 const BULLET_SPEED: int = 2000
 const BULLET_TMP: PackedScene = preload("res://Bullet.tscn")
 
@@ -18,6 +18,7 @@ func shoot():
 	bullet.position = $Marker2D.global_position
 	bullet.rotation_degrees = self.rotation_degrees
 	bullet.apply_impulse(Vector2(BULLET_SPEED, 0).rotated(rotation))
+	bullet.add_to_group("projectile")
 	owner.add_child(bullet)
 	
 	
@@ -25,6 +26,6 @@ func kill():
 	get_tree().reload_current_scene()
 
 
-func _on_area_2d_body_entered(body):
-	if "Enemy" in body.name:
-		kill()
+#func _on_area_2d_body_entered(body):
+#	if "Enemy" in body.name:
+#		kill()

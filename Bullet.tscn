@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtogs7v6y0aff"]
+[gd_scene load_steps=4 format=3 uid="uid://dtogs7v6y0aff"]
 
 [ext_resource type="Texture2D" uid="uid://ciqhhcywmh7in" path="res://Player.png" id="1_8ddy5"]
+[ext_resource type="Script" path="res://Bullet.gd" id="1_v1hxi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2f55v"]
-size = Vector2(8, 3)
+size = Vector2(9, 4)
 
 [node name="Bullet" type="RigidBody2D"]
 gravity_scale = 0.0
+script = ExtResource("1_v1hxi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2f55v")
@@ -14,3 +16,9 @@ shape = SubResource("RectangleShape2D_2f55v")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.2)
 texture = ExtResource("1_8ddy5")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
